@@ -73,7 +73,7 @@ app.get('/api/config/weights', (req, res) => {
 });
 
 // ─── 404 Handler ──────────────────────────────────────────
-app.use('/api/{*path}', (req, res) => {
+app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint not found',
     available_endpoints: {
