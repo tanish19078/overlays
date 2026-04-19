@@ -49,14 +49,6 @@ const Landing = () => {
       }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: '900px' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div style={{ 
-              display: 'inline-block', padding: '6px 16px', background: 'var(--color-surface-hover)', 
-              borderRadius: '20px', fontSize: '14px', fontWeight: 600, color: 'var(--color-primary-dim)',
-              border: '1px solid var(--color-border)', marginBottom: '32px'
-            }}>
-              🔥 The #1 Industrial Heat Marketplace
-            </div>
-            
             <h1 style={{ fontSize: '64px', fontWeight: 900, lineHeight: 1.1, marginBottom: '24px', letterSpacing: '-2px' }}>
               Turn Every Factory's Exhaust Into a <span className="text-gradient">Neighbor's Resource</span>
             </h1>

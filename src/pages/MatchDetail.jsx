@@ -85,13 +85,25 @@ const MatchDetail = () => {
           </div>
 
           {/* Distance & Temperature Details */}
-          <div style={{ marginTop: '24px', padding: '16px', background: 'var(--color-surface)', borderRadius: '8px' }}>
-            <h4 style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '12px' }}>Physical Parameters</h4>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '14px' }}>
-              <div><span style={{ color: 'var(--color-text-muted)' }}>Distance:</span> <strong>{match.distance_km} km</strong></div>
-              <div><span style={{ color: 'var(--color-text-muted)' }}>Effective Temp:</span> <strong>{match.effective_temp_c}°C</strong></div>
-              <div><span style={{ color: 'var(--color-text-muted)' }}>Thermal Loss:</span> <strong>{match.thermal_loss_pct}%</strong></div>
-              <div><span style={{ color: 'var(--color-text-muted)' }}>Transfer:</span> <strong>{match.transfer_mw} MW</strong></div>
+          <div style={{ marginTop: '24px', padding: '20px', background: 'var(--color-surface)', borderRadius: '8px' }}>
+            <h4 style={{ fontSize: '16px', color: 'var(--color-text-secondary)', marginBottom: '16px' }}>Engineering Specifications</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div><div style={{ color: 'white', fontWeight: 600 }}>Routing Distance</div><div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Geographic span + 35% routing overhead</div></div> 
+                <strong style={{ fontSize: '16px' }}>{match.distance_km} km</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div><div style={{ color: 'white', fontWeight: 600 }}>Delivery Temp.</div><div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Heat remaining after transit losses</div></div> 
+                <strong style={{ fontSize: '16px' }}>{match.effective_temp_c}°C</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div><div style={{ color: 'white', fontWeight: 600 }}>Thermal Loss</div><div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Energy dissipated naturally in pipes</div></div> 
+                <strong style={{ fontSize: '16px' }}>{match.thermal_loss_pct}%</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div><div style={{ color: 'white', fontWeight: 600 }}>Net Energy Transfer</div><div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Usable heat delivered continuously</div></div> 
+                <strong style={{ fontSize: '16px' }}>{match.transfer_mw} MW</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -101,41 +113,46 @@ const MatchDetail = () => {
           
           <div style={{ display: 'flex', gap: '24px' }}>
             <div className="glass-panel" style={{ flex: 1, padding: '32px' }}>
-              <h3 style={{ marginBottom: '24px', fontSize: '18px', borderBottom: '1px solid var(--color-border)', paddingBottom: '16px' }}>ROI & Financials</h3>
+              <h3 style={{ marginBottom: '24px', fontSize: '18px', borderBottom: '1px solid var(--color-border)', paddingBottom: '16px' }}>ROI & Financial Analysis</h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
                 <div>
-                  <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Annual Savings</div>
+                  <div style={{ fontSize: '14px', fontWeight: 600 }}>Annual Savings</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>Reduced fossil fuel burn costs</div>
                   <div style={{ fontSize: '24px', fontWeight: 800, color: '#2ECC71' }}>${(match.annual_savings_usd / 1000000).toFixed(2)}M</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Total Investment</div>
+                  <div style={{ fontSize: '14px', fontWeight: 600 }}>Total CAPEX</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>Total infrastructure investment</div>
                   <div style={{ fontSize: '24px', fontWeight: 800 }}>${(match.total_investment_usd / 1000000).toFixed(2)}M</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Payback Period</div>
+                  <div style={{ fontSize: '14px', fontWeight: 600 }}>Payback Period</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>Time to break even (at 8% rate)</div>
                   <div style={{ fontSize: '24px', fontWeight: 800 }}>{match.payback_years.toFixed(1)} <span style={{fontSize: '14px', fontWeight: 400}}>Years</span></div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Energy Saved</div>
+                  <div style={{ fontSize: '14px', fontWeight: 600 }}>Energy Captured</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>Reused waste per year</div>
                   <div style={{ fontSize: '24px', fontWeight: 800 }}>{match.annual_savings_mwh.toLocaleString()} <span style={{fontSize: '14px', fontWeight: 400}}>MWh/yr</span></div>
                 </div>
               </div>
 
               {/* Infrastructure Breakdown */}
               {match.infrastructure_breakdown && (
-                <div style={{ marginTop: '20px', padding: '12px', background: 'var(--color-surface)', borderRadius: '8px', fontSize: '13px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ color: 'var(--color-text-muted)' }}>Pipe Cost</span>
-                    <span>${(match.infrastructure_breakdown.pipe_cost / 1000000).toFixed(2)}M</span>
+                <div style={{ marginTop: '20px', padding: '16px', background: 'var(--color-surface)', borderRadius: '8px', fontSize: '13px' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', textTransform: 'uppercase', marginBottom: '12px', fontWeight: 600 }}>CAPEX Breakdown</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span style={{ color: 'var(--color-text-muted)' }}>Insulated Piping Grid</span>
+                    <span style={{ fontWeight: 600 }}>${(match.infrastructure_breakdown.pipe_cost / 1000000).toFixed(2)}M</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ color: 'var(--color-text-muted)' }}>Heat Exchanger</span>
-                    <span>${(match.infrastructure_breakdown.heat_exchanger_cost / 1000).toFixed(0)}K</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span style={{ color: 'var(--color-text-muted)' }}>Heat Recovery Exchangers</span>
+                    <span style={{ fontWeight: 600 }}>${(match.infrastructure_breakdown.heat_exchanger_cost / 1000).toFixed(0)}K</span>
                   </div>
                   {match.infrastructure_breakdown.storage_cost > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--color-text-muted)' }}>Thermal Storage</span>
-                      <span>${(match.infrastructure_breakdown.storage_cost / 1000).toFixed(0)}K</span>
+                      <span style={{ color: 'var(--color-text-muted)' }}>Thermal Battery Storage</span>
+                      <span style={{ fontWeight: 600 }}>${(match.infrastructure_breakdown.storage_cost / 1000).toFixed(0)}K</span>
                     </div>
                   )}
                 </div>
@@ -163,8 +180,7 @@ const MatchDetail = () => {
           </div>
 
           <div className="glass-panel" style={{ padding: '24px', display: 'flex', justifyContent: 'flex-end', gap: '16px' }}>
-            <button onClick={() => alert("Downloading AI Report PDF...")} style={{ background: 'transparent', border: '1px solid var(--color-border)', color: 'white', padding: '12px 24px', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Download Report</button>
-            <button onClick={() => alert("Connection Request Sent to Facility Manager.")} style={{ background: 'var(--color-primary)', border: 'none', color: 'white', padding: '12px 32px', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Initiate Connection Request</button>
+            <button onClick={() => alert("Connection Request Sent to Facility Manager.")} style={{ background: 'var(--color-primary)', border: 'none', color: 'white', padding: '12px 32px', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', width: '100%', fontSize: '16px' }}>Initiate Formal Engineering Connection Request &rarr;</button>
           </div>
 
         </div>

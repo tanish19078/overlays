@@ -114,11 +114,11 @@ const MatchesList = () => {
             {/* Actions */}
             <div>
               <Link to={`/matches/${m.id}`} style={{
-                display: 'block', background: 'var(--color-surface-hover)', border: '1px solid var(--color-border)',
+                display: 'block', background: 'var(--color-primary)', color: 'white', border: '1px solid var(--color-primary-dim)',
                 padding: '12px 24px', borderRadius: '6px', fontWeight: 600, transition: 'all 0.2s',
-                textAlign: 'center'
+                textAlign: 'center', textDecoration: 'none'
               }}>
-                View Details
+                Tap to unlock best match & more &rarr;
               </Link>
             </div>
           </div>

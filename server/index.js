@@ -73,7 +73,7 @@ app.get('/api/config/weights', (req, res) => {
 });
 
 // ─── 404 Handler ──────────────────────────────────────────
-app.use('*', (req, res) => {
+app.use((req, res) => {
   res.status(404).json({
     error: 'Endpoint not found',
     available_endpoints: {
@@ -105,7 +105,7 @@ app.use('*', (req, res) => {
 // ─── SPA Fallback (Production) ────────────────────────────
 // All non-API routes serve the React app's index.html
 if (process.env.NODE_ENV === 'production') {
-  app.get('/{*path}', (req, res) => {
+  app.get(/(.*)/, (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
   });
 }

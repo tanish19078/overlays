@@ -49,10 +49,9 @@ const MapExplorer = () => {
       .then(res => res.json())
       .then(json => {
          const realData = json.facilities || [];
-         const mockData = generateMockFacilities(65);
-         setAllFacilities([...realData, ...mockData]);
+         setAllFacilities(realData);
       })
-      .catch(() => setAllFacilities(generateMockFacilities(100)));
+      .catch(() => setAllFacilities([]));
 
     fetch(`${API_BASE}/api/matches`)
       .then(res => res.json())
@@ -120,7 +119,10 @@ const MapExplorer = () => {
         intervalsRef.current.match = null;
         setIsScanning(false);
         setScanDone(true);
-        setAiStatus(`AI Scan Complete: ${allMatches.length} Viable Connections`);
+        setAiStatus(`AI Scan Complete: ${allMatches.length} Viable Connections. Redirecting...`);
+        setTimeout(() => {
+          window.location.href = '/matches';
+        }, 2000);
       }
     }, 150);
   };
