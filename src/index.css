@@ -1,0 +1,139 @@
+:root {
+  /* Color Palette — AI Synthesizer Focus */
+  --color-base: #0F172A;             /* Deep slate background */
+  --color-surface: #1E293B;          /* Level 1 surface */
+  --color-surface-hover: #334155;    /* Level 2 surface / hover */
+  --color-surface-glass: rgba(30, 41, 59, 0.7);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-focus: rgba(139, 92, 246, 0.5);
+
+  --color-primary: #8B5CF6;          /* AI Amethyst */
+  --color-primary-dim: #C4B5FD;      /* Amethyst dim */
+  --color-primary-glow: rgba(139, 92, 246, 0.3);
+
+  --color-heat: #06B6D4;             /* Cyan (Data/Heat alternative) */
+  --color-cold: #10B981;             /* Emerald */
+
+  --color-match-high: #10B981;       /* Emerald */
+  --color-match-mid: #06B6D4;        /* Cyan */
+  --color-match-low: #F43F5E;        /* Rose Red */
+
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 16px; /* Increased roundness for AI aesthetic */
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--color-primary-dim), var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-heat {
+  background: linear-gradient(to right, #FFB59D, var(--color-heat));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Map Overrides */
+.leaflet-container {
+  background: var(--color-base) !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-hover);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Animations */
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-line {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: draw-line 1.5s forwards ease-in-out;
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.radar-sweep-animation {
+  animation: radar-pulse 4s infinite linear;
+}

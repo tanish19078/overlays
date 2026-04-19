@@ -1,0 +1,13 @@
+# Render.com Blueprint — OverLays Full-Stack Deployment
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: overlays
+    runtime: node
+    plan: free
+    buildCommand: npm run render-build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
