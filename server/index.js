@@ -33,8 +33,7 @@ app.use((req, res, next) => {
 
 // ─── In-Memory Database ───────────────────────────────────
 // Load simulated facility data
-const facilitiesPath = path.join(__dirname, 'data', 'facilities.json');
-const facilitiesData = JSON.parse(fs.readFileSync(facilitiesPath, 'utf-8'));
+const facilitiesData = require('./data/facilities.json');
 
 const db = {
   facilities: facilitiesData,

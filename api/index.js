@@ -19,8 +19,7 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 // ─── In-Memory Database ───────────────────────────────────
-const facilitiesPath = path.join(__dirname, '..', 'server', 'data', 'facilities.json');
-const facilitiesData = JSON.parse(fs.readFileSync(facilitiesPath, 'utf-8'));
+const facilitiesData = require('../server/data/facilities.json');
 
 const db = {
   facilities: facilitiesData,
