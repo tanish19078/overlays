@@ -122,12 +122,14 @@ app.use((err, req, res, next) => {
 });
 
 // ─── Start Server ─────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n🔥 OverLays API running on http://localhost:${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`🏭 Facilities:   http://localhost:${PORT}/api/facilities`);
-  console.log(`🔗 Matches:      http://localhost:${PORT}/api/matches`);
-  console.log(`📈 Analytics:    http://localhost:${PORT}/api/analytics/summary\n`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n🔥 OverLays API running on http://localhost:${PORT}`);
+    console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
+    console.log(`🏭 Facilities:   http://localhost:${PORT}/api/facilities`);
+    console.log(`🔗 Matches:      http://localhost:${PORT}/api/matches`);
+    console.log(`📈 Analytics:    http://localhost:${PORT}/api/analytics/summary\n`);
+  });
+}
 
 module.exports = app;

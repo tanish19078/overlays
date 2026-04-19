@@ -32,7 +32,7 @@ function mlPredict(payload) {
     const output = execSync(`python "${pyScript}"`, {
       input: JSON.stringify(payload),
       encoding: 'utf-8',
-      timeout: 10000, // 10s hard timeout per prediction
+      timeout: 4000, // 4s timeout to prevent Serverless limits
     });
     const result = JSON.parse(output.trim());
 
