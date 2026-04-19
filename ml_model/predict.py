@@ -23,8 +23,8 @@ try:
 
     df = pd.DataFrame([features])
     
-    # Assuming overlays_model.pkl is downloaded to this folder!
-    model_path = os.path.join(os.path.dirname(__file__), 'overlays_model.pkl')
+    # Assuming thermolink_model.pkl is downloaded to this folder!
+    model_path = os.path.join(os.path.dirname(__file__), 'thermolink_model.pkl')
     model = joblib.load(model_path)
     
     prediction = model.predict(df)[0]
