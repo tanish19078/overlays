@@ -44,8 +44,13 @@ console.log(`📦 Loaded ${db.facilities.length} facilities from dataset`);
 
 // ─── Routes ───────────────────────────────────────────────
 app.use('/api/facilities', facilitiesRouter(db));
+app.use('/facilities', facilitiesRouter(db));
+
 app.use('/api/matches', matchesRouter(db));
+app.use('/matches', matchesRouter(db));
+
 app.use('/api/analytics', analyticsRouter(db));
+app.use('/analytics', analyticsRouter(db));
 
 // ─── Serve Frontend (Production) ──────────────────────────
 // In production, serve the Vite-built static files
