@@ -28,11 +28,16 @@ const db = {
 
 // ─── Routes ───────────────────────────────────────────────
 app.use('/api/facilities', facilitiesRouter(db));
+app.use('/facilities', facilitiesRouter(db));
+
 app.use('/api/matches', matchesRouter(db));
+app.use('/matches', matchesRouter(db));
+
 app.use('/api/analytics', analyticsRouter(db));
+app.use('/analytics', analyticsRouter(db));
 
 // ─── Health Check ─────────────────────────────────────────
-app.get('/api/health', (req, res) => {
+const healthCheck = (req, res) => {
   res.json({
     status: 'healthy',
     service: 'OverLays API',
@@ -41,7 +46,9 @@ app.get('/api/health', (req, res) => {
     facilities_loaded: db.facilities.length,
     matches_cached: db.cachedMatches ? db.cachedMatches.length : 0,
   });
-});
+};
+app.get('/api/health', healthCheck);
+app.get('/health', healthCheck);
 
 // ─── Config endpoint ──────────────────────────────────────
 app.get('/api/config/weights', (req, res) => {
