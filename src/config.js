@@ -5,7 +5,7 @@
  */
 const API_BASE =
   import.meta.env.MODE === 'production'
-    ? ''  // Same origin in production (Vercel serverless or Render)
+    ? 'https://overlays-aewg.onrender.com'  // Point Vercel frontend to Render backend!
     : 'http://localhost:3001';
 
 export default API_BASE;
