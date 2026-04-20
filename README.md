@@ -2,6 +2,8 @@
 
 **AI-Powered Industrial Heat Waste Recovery Marketplace**
 
+Built at HackHelix - Thapar Institute of Engineering & Technology
+
 ## The Problem
 
 Every year, industry wastes enough heat to power 250 million homes. Globally, **$70 Billion** of industrial heat is wasted annually, accounting for **20-50%** of industrial energy lost, and producing **~1.5 Gt** of CO2 emissions. 
@@ -12,7 +14,7 @@ The IEA estimates that 50% of industrial heat is recoverable, but only 5% is rec
 
 ## The Solution
 
-OverLays is the first AI-powered B2B marketplace that automatically discovers, scores, and connects industrial waste heat sources with nearby thermal energy consumers.
+OverLays is  AI-powered B2B marketplace that automatically discovers, scores, and connects industrial waste heat sources with nearby thermal energy consumers.
 
 **How it works:**
 1. **Register:** Upload your facility's heat profile (source or sink).
